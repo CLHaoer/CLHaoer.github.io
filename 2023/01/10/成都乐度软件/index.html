@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="x5-fullscreen" content="true">
+<meta name="full-screen" content="yes">
+<meta name="theme-color" content="#317EFB" />
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
+<meta name="description" content="1.HTTP状态码及其含义11XX   100 Continue   继续，一般在发送post请求时，已发送了http header之后服务端将返回此信息，表示确认，之后发送具体参数信息  12XX   200 OK&#96;         正常返回信息 201 Created   请求成功并且服务器创建了新的资源 202 Accepted   服务器已接受请求，但尚未处理  13XX   301 Mo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="成都乐度软件面试">
+<meta property="og:url" content="http://example.com/2023/01/10/%E6%88%90%E9%83%BD%E4%B9%90%E5%BA%A6%E8%BD%AF%E4%BB%B6/index.html">
+<meta property="og:site_name" content="CLHaoer">
+<meta property="og:description" content="1.HTTP状态码及其含义11XX   100 Continue   继续，一般在发送post请求时，已发送了http header之后服务端将返回此信息，表示确认，之后发送具体参数信息  12XX   200 OK&#96;         正常返回信息 201 Created   请求成功并且服务器创建了新的资源 202 Accepted   服务器已接受请求，但尚未处理  13XX   301 Mo">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-01-10T13:46:07.173Z">
+<meta property="article:modified_time" content="2023-01-10T15:52:15.778Z">
+<meta property="article:author" content="CLHaoer">
+<meta property="article:tag" content="clling,clhaoer,CLHaoer,RenYa,renya,仁芽百川">
+<meta name="twitter:card" content="summary">
+
+    <meta name="keywords" content="前端,面试题">
+
+
+<title >成都乐度软件面试</title>
+
+<!-- Favicon -->
+
+    <link href='/img/favicon_my.svg?v=1.2.14' rel='icon' type='image/png' sizes='16x16' ></link>
+
+
+    <link href='/img/favicon_my.svg?v=1.2.14' rel='icon' type='image/png' sizes='32x32' ></link>
+
+
+    <link href='/img/favicon.png?v=1.2.14' rel='apple-touch-icon' sizes='180x180' ></link>
+
+
+
+<!-- Plugin -->
+
+
+
+
+    
+<link rel="stylesheet" href="/css/plugins/bootstrap.row.css">
+
+    
+<link rel="stylesheet" href="https://unpkg.com/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.css">
+
+    
+<link rel="stylesheet" href="https://unpkg.com/@fancyapps/ui@4.0/dist/fancybox.css">
+
+
+    
+
+    
+
+
+
+<!-- Icon -->
+
+    
+<link rel="stylesheet" href="/css/plugins/font-awesome.min.css">
+
+
+
+
+<!-- Variable -->
+<script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"CLHaoer","root":"/","typed_text":["Web Developer"],"favicon":{"logo":"https://count.getloli.com/get/@www.clhaoer.github.io?theme=rule34","icon16":"/img/favicon_my.svg","icon32":"/img/favicon_my.svg","appleTouchIcon":"/img/favicon.png","webmanifest":null,"visibilitychange":true,"hidden":"failure.ico","showText":"(/≧▽≦/)咦！又好了！","hideText":"(●—●)喔哟，崩溃啦！"},"theme_version":"1.2.14","theme":{"switch":true,"default":"style-light"},"search":{"enable":true,"type":"local","href":"https://www.google.com/search?q=site:","domain":null,"preload":true,"path":"search.xml"},"i18n":{"placeholder":"搜索...","empty":"找不到您查询的内容: ${query}","hits":"找到 ${hits} 条结果","hits_time":"找到 ${hits} 条结果（用时 ${time} 毫秒）","author":"本文作者：","copyright_link":"本文链接：","copyright_license_title":"版权声明：","copyright_license_content":"本博客所有文章除特别声明外，均默认采用 undefined 许可协议。","copy_button":"复制","copy_success":"复制成功","copy_failure":"复制失败","open_read_mode":"进入阅读模式","exit_read_mode":"退出阅读模式"},"creative_commons":{"license":"by-nc-sa","language":"deed.zh","post":false,"clipboard":false},"swup":false,"plugin":{"flickr_justified_gallery":{"js":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"fancybox":{"css":"https://unpkg.com/@fancyapps/ui@4.0/dist/fancybox.css","js":"https://unpkg.com/@fancyapps/ui@4.0/dist/fancybox.umd.js"}},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","user_tag":"fas fa-user-alt","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h"}};</script>
+
+<!-- Theme mode css -->
+<link data-swup-theme rel="stylesheet" href="/css/index.css?v=1.2.14" id="trm-switch-style">
+<script>
+    let defaultMode = ASYNC_CONFIG.theme.default !=='auto' ?  ASYNC_CONFIG.theme.default : (window.matchMedia("(prefers-color-scheme: light)").matches ? 'style-light' : 'style-dark')
+    let catchMode = localStorage.getItem('theme-mode') || defaultMode;
+    let type = catchMode === 'style-dark' ? 'add' : 'remove';
+    document.documentElement.classList[type]('dark')
+</script>
+
+<!-- CDN -->
+
+
+    
+
+    
+
+
+
+<!-- Site Analytics -->
+ 
+<meta name="generator" content="Hexo 5.4.2"><link rel="alternate" href="/atom.xml" title="CLHaoer" type="application/atom+xml">
+</head>
+
+<body>
+
+  <!-- app wrapper -->
+  <div class="trm-app-frame">
+
+    <!-- page preloader -->
+    <div class="trm-preloader">
+    <div class="trm-holder">
+        <div class="preloader">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+</div>
+    <!-- page preloader end -->
+
+    <!-- change mode preloader -->
+    <div class="trm-mode-swich-animation-frame">
+    <div class="trm-mode-swich-animation">
+        <i class="i-sun"><i class="iconfont far fa-sun"></i></i>
+        <div class="trm-horizon"></div>
+        <i class="i-moon"><i class="iconfont far fa-moon"></i></i>
+    </div>
+</div>
+    <!-- change mode preloader end -->
+
+      <!-- scroll container -->
+      <div id="trm-dynamic-content" class="trm-swup-animation">
+        <div id="trm-scroll-container" class="trm-scroll-container" data-scroll-container style="opacity: 0">
+          <div data-scroll-section id="content" class="trm-scroll-section">
+
+            <div class="locomotive-scroll__sticky-target" style=" position: absolute; top: 0; left: 0; right: 0; bottom: 0; pointer-events: none;"></div>
+
+            <!-- top bar -->
+            <header class="trm-top-bar" data-scroll data-scroll-sticky data-scroll-target=".locomotive-scroll__sticky-target" data-scroll-offset="-10">
+	<div class="container">
+		<div class="trm-left-side">
+			<!-- logo -->
+			<a href="/" class="trm-logo-frame trm-anima-link">
+				
+					<img alt="logo" src="https://count.getloli.com/get/@www.clhaoer.github.io?theme=rule34">
+				
+				
+			</a>
+			<!-- logo end -->
+		</div>
+		<div class="trm-right-side">
+
+			<!-- menu -->
+			<div class="trm-menu">
+				<nav>
+					<ul>
+						
+						<li class="menu-item-has-children ">
+							<a  href="/" target="">
+								首页
+							</a>
+							
+						</li>
+						
+						<li class="menu-item-has-children ">
+							<a  href="/archives/" target="">
+								归档
+							</a>
+							
+						</li>
+						
+						<li class="menu-item-has-children ">
+							<a  href="/about/" target="">
+								关于
+							</a>
+							
+						</li>
+						
+						<li class="menu-item-has-children ">
+							<a  href="/Fireworks/index.html" target="">
+								烟花模拟器
+							</a>
+							
+						</li>
+						
+					</ul>
+				</nav>
+			</div>
+			<!-- menu end -->
+			
+			<!-- mode switcher place -->
+			
+			<div class="trm-mode-switcher-place">
+				<!-- <div class="trm-hidden-switcher"> -->
+					<div class="trm-mode-switcher">
+					  <i class="iconfont far fa-sun"></i>
+					  <input class="tgl tgl-light" id="trm-swich" type="checkbox">
+					  <label class="trm-swich" for="trm-swich"></label>
+					  <i class="iconfont far fa-moon"></i>
+					</div>
+				  <!-- </div> -->
+			</div>
+			
+			<!-- mode switcher place end -->
+
+			
+				
+				<div id="trm-search-btn" class="trm-search-btn">
+					<i class="iconfont fas fa-search"></i>
+				</div>
+				 
+			 
+
+		</div>
+		<div class="trm-menu-btn">
+			<span></span>
+		</div>
+	</div>
+</header>
+            <!-- top bar end -->
+
+            <!-- body -->
+            
+<div class="trm-content-start">
+    <!-- banner -->
+    <div class="trm-banner" data-scroll data-scroll-direction="vertical">
+    
+    <!-- banner cover -->
+    <img style="object-position:top;object-fit:cover;" alt="banner" class="trm-banner-cover" data-scroll data-scroll-direction="vertical" data-scroll-speed="-3" src="https://v.api.aa1.cn/api/bz-v4/img/5-%EF%BC%88%E5%85%8D%E8%B4%B9api:api.aa1.cn%E9%9A%8F%E6%9C%BA%E9%AB%98%E6%B8%85%E6%89%8B%E7%BB%98%E5%A3%81%E7%BA%B8v4%EF%BC%89.jpg">
+    <!-- banner cover end -->
+    
+
+    <!-- banner content -->
+    <div class="trm-banner-content trm-overlay">
+        <div class="container" data-scroll data-scroll-direction="vertical" data-scroll-speed="0">
+            <div class="row">
+                
+                <div class="col-lg-4"></div>
+                
+                <div class="col-lg-8">
+
+                    <!-- banner title -->
+                    <div class="trm-banner-text ">
+                        <div class="trm-label trm-mb-20">
+                            前端八股文,看完之后，没一个能打的~💪
+                        </div>
+                        <h1 class="trm-mb-30 trm-hsmb-font">
+                            成都乐度软件面试
+                        </h1>
+
+                        
+                            <ul class="trm-breadcrumbs trm-label">
+                                <li>
+                                    <a href="/" class="trm-anima-link">Home</a>
+                                </li>
+                                <li>
+                                    <span>
+                                        2023
+                                    </span
+                                ></li>
+                            </ul>
+                        
+                    </div>
+                    <!-- banner title end -->
+
+                    <!-- scroll hint -->
+                    <a href="#about-triger" data-scroll-to="#about-triger" data-scroll-offset="-130" class="trm-scroll-hint-frame">
+                        <div class="trm-scroll-hint"></div>
+                        <span class="trm-label">Scroll down</span>
+                    </a>
+                    <!-- scroll hint end -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- banner content end -->
+</div>
+
+    <!-- banner end -->
+    <div class="container">
+        <div class="row">
+            
+                <div id="page-sidebar" class="col-lg-4 hidden-sm">
+                    <!-- main card -->
+                    
+
+<div class="trm-main-card-frame trm-sidebar">
+    <div class="trm-main-card" data-scroll data-scroll-repeat data-scroll-sticky data-scroll-target=".locomotive-scroll__sticky-target" data-scroll-offset="60"> 
+    
+        <div class="trm-user-tabs" id="sidebar-tabs">
+           <div class="trm-tabs-nav trm-mb-40" id="trm-tabs-nav">
+                <div data-to="tabs-user" class="trm-tabs-nav-item">
+                    <i class="iconfont fas fa-user-alt"></i>
+                </div>
+                <div data-to="tabs-toc" class="trm-tabs-nav-item active">
+                    <i class="iconfont fas fa-th-list"></i>
+                </div>
+           </div>
+            <div name="tabs-user" class="trm-tabs-item">
+                <!-- card header -->
+<div class="trm-mc-header">
+    <div class="trm-avatar-frame trm-mb-20">
+        <img alt="Avatar" class="trm-avatar" src="/img/R-C.gif">
+    </div>
+    <h5 class="trm-name trm-mb-15">
+        仁芽百川
+    </h5>
+    
+    <div class="trm-label">
+        I`m
+        <span class="trm-typed-text">
+            <!-- Words for theme.user.typedText -->
+        </span>
+    </div>
+    
+</div>
+<!-- card header end -->
+
+<!-- sidebar social -->
+<div class="trm-divider trm-mb-40 trm-mt-40"></div>
+
+<div class="trm-social">
+    
+        <a href="https://github.com/CLHaoer" title="Github" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-github"></i>
+        </a>
+    
+        <a href="https://gitee.com/CLHaoer" title="Gitee" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-github-alt"></i>
+        </a>
+    
+        <a href="/atom.xml" title="" rel="nofollow" target="_blank">
+            <i class="iconfont fas fa-rss-square"></i>
+        </a>
+    
+</div>
+
+<!-- sidebar social end -->
+
+<!-- info -->
+<div class="trm-divider trm-mb-40 trm-mt-40"></div>
+<ul class="trm-table trm-mb-20">
+    
+        <li>
+            <div class="trm-label">
+                当前城市:
+            </div>
+            <div class="trm-label trm-label-light">
+                成都
+            </div>
+        </li>
+    
+        <li>
+            <div class="trm-label">
+                年龄:
+            </div>
+            <div class="trm-label trm-label-light">
+                18 year old
+            </div>
+        </li>
+    
+</ul>
+
+<!-- info end -->
+<div class="trm-divider trm-mb-40 trm-mt-40"></div>
+<!-- action button -->
+<div class="text-center">
+    <a href="mailto:clhaoer@163.com" class="trm-btn">
+        联系我
+        <i class="iconfont far fa-envelope"></i>
+    </a>
+</div>
+<!-- action button end -->
+
+            </div>
+            <div name="tabs-toc" class="trm-tabs-item active">
+                <div class="post-toc">
+    <ol class="toc"><li class="toc-item toc-level-2"><a rel="nofollow" class="toc-link" href="#1-HTTP状态码及其含义"  data-scroll-to="#1-HTTP状态码及其含义"><span class="toc-number">1.</span> <span class="toc-text">1.HTTP状态码及其含义</span></a></li><li class="toc-item toc-level-2"><a rel="nofollow" class="toc-link" href="#2-null，undefined-的区别"  data-scroll-to="#2-null，undefined-的区别"><span class="toc-number">2.</span> <span class="toc-text">2.null，undefined 的区别</span></a></li><li class="toc-item toc-level-2"><a rel="nofollow" class="toc-link" href="#3-vuex有哪些属性"  data-scroll-to="#3-vuex有哪些属性"><span class="toc-number">3.</span> <span class="toc-text">3.vuex有哪些属性</span></a></li><li class="toc-item toc-level-2"><a rel="nofollow" class="toc-link" href="#4-vue中的路由模式"  data-scroll-to="#4-vue中的路由模式"><span class="toc-number">4.</span> <span class="toc-text">4.vue中的路由模式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a rel="nofollow" class="toc-link" href="#history模式"  data-scroll-to="#history模式"><span class="toc-number">4.1.</span> <span class="toc-text">history模式</span></a></li><li class="toc-item toc-level-3"><a rel="nofollow" class="toc-link" href="#hash模式"  data-scroll-to="#hash模式"><span class="toc-number">4.2.</span> <span class="toc-text">hash模式</span></a></li></ol></li><li class="toc-item toc-level-2"><a rel="nofollow" class="toc-link" href="#5-GET-POST的本质区别"  data-scroll-to="#5-GET-POST的本质区别"><span class="toc-number">5.</span> <span class="toc-text">5.GET&#x2F;POST的本质区别</span></a></li><li class="toc-item toc-level-2"><a rel="nofollow" class="toc-link" href="#6-CDN的优化原理"  data-scroll-to="#6-CDN的优化原理"><span class="toc-number">6.</span> <span class="toc-text">6.CDN的优化原理</span></a></li></ol>
+</div>
+            </div>
+        </div>
+    
+    </div>
+</div>
+                    <!-- main card end -->
+                </div>
+            
+            <div id="page-content" class="col-lg-8">
+                <div class="trm-content" id="trm-content">
+                    <div data-scroll data-scroll-repeat data-scroll-offset="500" id="about-triger"></div>
+
+                    <div id="post-info" class="row hidden-sm">
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-calendar-alt trm-icon"></i><br>
+            01/10
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-clock trm-icon"></i><br>
+            21:46
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div id="post-author" class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-user trm-icon"></i><br>
+            旭旭东东
+        </div>
+    </div>
+</div>
+<div class="trm-card ">
+    <article id="article-container" class="trm-publication">
+    <h2 id="1-HTTP状态码及其含义"><a href="#1-HTTP状态码及其含义" class="headerlink" title="1.HTTP状态码及其含义"></a>1.HTTP状态码及其含义</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1XX</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>100 Continue</code>   继续，一般在发送<code>post</code>请求时，已发送了<code>http header</code>之后服务端将返回此信息，表示确认，之后发送具体参数信息</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2XX</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>200 OK`         正常返回信息</li>
+<li><code>201 Created</code>   请求成功并且服务器创建了新的资源</li>
+<li><code>202 Accepted</code>   服务器已接受请求，但尚未处理</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">3XX</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>301 Moved Permanently</code>  请求的网页已永久移动到新位置。</li>
+<li><code>302 Found</code>     临时性重定向。</li>
+<li><code>303 See Other</code>  临时性重定向，且总是使用 <code>GET</code> 请求新的 <code>URI</code>。</li>
+<li><code>304 Not Modified</code> 自从上次请求后，请求的网页未修改过。</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">4XX</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>400 Bad Request</code> 服务器无法理解请求的格式，客户端不应当尝试再次使用相同的内容发起请求。</li>
+<li><code>401 Unauthorized</code> 请求未授权。</li>
+<li><code>403 Forbidden</code>  禁止访问。</li>
+<li><code>404 Not Found</code>   找不到如何与 <code>URI</code> 相匹配的资源。</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">5XX:</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>500 Internal Server Error</code>  最常见的服务器端错误。</li>
+<li><code>503 Service Unavailable</code> 服务器端暂时无法处理请求（可能是过载或维护）。</li>
+</ul>
+<h2 id="2-null，undefined-的区别"><a href="#2-null，undefined-的区别" class="headerlink" title="2.null，undefined 的区别"></a>2.null，undefined 的区别</h2><p><code>undefined</code>   表示不存在这个值。</p>
+<p><code>undefined</code> :是一个表示”无”的原始值或者说表示”缺少值”，就是此处应该有一个值，但是还没有定义。当尝试读取时会返回 <code>undefined</code></p>
+<p>例如变量被声明了，但没有赋值时，就等于<code>undefined</code></p>
+<p><code>null</code> 表示一个对象被定义了，值为“空值”</p>
+<p><code>null</code> : 是一个对象(空对象, 没有任何属性和方法)</p>
+<p>例如作为函数的参数，表示该函数的参数不是对象；</p>
+<p>在验证<code>null</code>时，一定要使用　<code>===</code> ，因为 <code>==</code>无法分别<code>null</code> 和　<code>undefined</code></p>
+<h2 id="3-vuex有哪些属性"><a href="#3-vuex有哪些属性" class="headerlink" title="3.vuex有哪些属性"></a>3.<strong>vuex有哪些属性</strong></h2><p>state：用于数据的存储，是store中的唯一数据源</p>
+<p>getters：如vue中的计算属性一样，基于state数据的二次包装，常用于数据的筛选和多个数据的相关性计算</p>
+<p>mutation：类似函数，改变state数据的唯一途径，且不能用于处理异步事件</p>
+<p>action：类似于mutation，用于提交mutation来改变状态，而不直接变更状态，可以包含任意异步操作</p>
+<p>modules：类似于命名空间，用于项目中将各个模块的状态分开定义和操作，便于维护</p>
+<h2 id="4-vue中的路由模式"><a href="#4-vue中的路由模式" class="headerlink" title="4.vue中的路由模式"></a>4.<strong>vue中的路由模式</strong></h2><h3 id="history模式"><a href="#history模式" class="headerlink" title="history模式"></a>history模式</h3><p>HTML5中的两个API：pushState和replaceState，改变url之后页面不会重新刷新，也不会带有#号，页面地址美观，url的改变会触发popState事件，监听该事件也可以实现根据不同的url渲染对应的页面内容</p>
+<p>但是因为没有#会导致用户在刷新页面的时候，还会发送请求到服务端，为避免这种情况，需要每次url改变的时候，都将所有的路由重新定位到跟路由下</p>
+<h3 id="hash模式"><a href="#hash模式" class="headerlink" title="hash模式"></a>hash模式</h3><p>url hash: http ://foo.com/#help</p>
+<p>后面hash值的改变，并不会重新加载页面，同时hash值的变化会触发hashchange事件，该事件可以监听，可根据不同的哈希值渲染不同的页面内容</p>
+<h2 id="5-GET-POST的本质区别"><a href="#5-GET-POST的本质区别" class="headerlink" title="5.GET/POST的本质区别"></a>5.<strong>GET/POST的本质区别</strong></h2><p>GET/POST的最大区别是GET请求有幂等性，但是POST请求没有。什么是幂等性呢？我们知道使用GET方法请求同样的接口，返回来的数据是不会改变的，但是对于POST请求，实现一些增删改查的操作的时候可能会发生重复提交的问题。</p>
+<p>也就是说我们如果使用GET请求做增删改查的时候，遇到网络不好可能会多次操作，造成数据库的混乱，这是一个很严重的问题，但是使用POST就不会有这种情况。</p>
+<h2 id="6-CDN的优化原理"><a href="#6-CDN的优化原理" class="headerlink" title="6.CDN的优化原理"></a>6.<strong>CDN的优化原理</strong></h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">CDN的全称是(Content Delivery Network)，即内容分发网络。其目的是通过在现有的Internet中增加一层新的CACHE(缓存)层，将网站的内容发布到最接近用户的网络”边缘“的节点，使用户可以就近取得所需的内容，提高用户访问网站的响应速度。</span><br><span class="line">CDN的工作原理就是将您源站的资源缓存到位于全球各地的CDN节点上，用户请求资源时，就近返回节点上缓存的资源，而不需要每个用户的请求都回您的源站获取，避免网络拥塞、缓解源站压力，保证用户访问资源的速度和体验</span><br></pre></td></tr></table></figure>
+
+
+
+</article>
+    
+    
+</div>
+<div id="post-next-prev" class="row">
+    <div class="col-lg-12">
+        <!-- title -->
+        <h5 class="trm-title-with-divider">
+            其他文章
+            <span data-number="02"></span>
+        </h5>
+    </div>
+    
+        <div class="col-lg-6">
+            <div class="trm-blog-card trm-scroll-animation" data-scroll data-scroll-offset="40">
+    <a href="/2023/01/10/%E5%AE%81%E6%B3%A2%E5%8C%97%E6%96%97%E6%98%93%E9%A3%9E/" class="trm-cover-frame trm-anima-link">
+        
+        
+            <img alt="cover" class="no-fancybox" src="https://v.api.aa1.cn/api/api-gqsh/img/037.png">
+        
+    </a>
+    <div class="trm-card-descr">
+        <div class="trm-label trm-category trm-mb-20">
+            <a href=" /categories/%E5%85%AB%E8%82%A1%E6%96%87/">
+                八股文
+            </a>
+        </div>
+        <h5>
+            <a href="/2023/01/10/%E5%AE%81%E6%B3%A2%E5%8C%97%E6%96%97%E6%98%93%E9%A3%9E/" class="trm-anima-link">
+                宁波北斗易飞面试
+            </a>
+        </h5>
+        <div class="trm-divider trm-mb-20 trm-mt-20"></div>
+        <ul class="trm-card-data trm-label">
+            <li>23/01/10</li>
+            <li>21:46</li>
+            
+            
+        </ul>
+    </div>
+</div>
+        </div>
+    
+    
+        <div class="col-lg-6">
+            <div class="trm-blog-card trm-scroll-animation" data-scroll data-scroll-offset="40">
+    <a href="/2023/01/10/%E6%88%90%E9%83%BD%E6%B3%95%E6%9C%AC/" class="trm-cover-frame trm-anima-link">
+        
+        
+            <img alt="cover" class="no-fancybox" src="https://v.api.aa1.cn/api/api-gqsh/img/338.jpg">
+        
+    </a>
+    <div class="trm-card-descr">
+        <div class="trm-label trm-category trm-mb-20">
+            <a href=" /categories/%E5%85%AB%E8%82%A1%E6%96%87/">
+                八股文
+            </a>
+        </div>
+        <h5>
+            <a href="/2023/01/10/%E6%88%90%E9%83%BD%E6%B3%95%E6%9C%AC/" class="trm-anima-link">
+                成都法本面试
+            </a>
+        </h5>
+        <div class="trm-divider trm-mb-20 trm-mt-20"></div>
+        <ul class="trm-card-data trm-label">
+            <li>23/01/10</li>
+            <li>21:46</li>
+            
+            
+        </ul>
+    </div>
+</div>
+        </div>
+    
+</div>
+
+    
+
+
+
+                    <div class="trm-divider footer-divider"></div>
+
+                    <!-- footer -->
+                    <footer class="trm-scroll-animation" data-scroll data-scroll-offset="50">
+
+    
+        <div class="trm-footer-item">
+            <a rel="noopener" href="https://beian.miit.gov.cn/" target="_blank">蜀ICP备2022003428号</a>
+        </div>
+    
+
+    
+        <div class="trm-footer-item">
+            <span>© 2022- 2023</span>
+            <span class="footer-separator"data-separator=" · "></span>
+            <span class="trm-accent-color">仁芽百川</span>
+        </div>
+    
+
+      
+
+    
+        <div class="trm-footer-item">
+            博客已萌萌哒运行 <span id="since" class="trm-accent-color"></span> 天
+        </div>
+     
+
+    
+        <div class="trm-footer-item">
+            🏮🏮🏮🧧🧧🧧新春快乐🧧🧧🧧🏮🏮🏮
+        </div>
+     
+</footer>
+
+<script>
+    function show_date_time () {
+        BirthDay = new Date("09/09/2022 17:00:00");
+        today = new Date();
+        timeold = (today.getTime() - BirthDay.getTime());
+        msPerDay = 24 * 60 * 60 * 1000
+        day = Math.floor(timeold / msPerDay)
+        since.innerHTML = day
+    }
+    show_date_time()
+</script>
+ 
+
+
+                    <!-- footer end -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+            <!-- body end -->
+
+            <!-- body -->
+            <div class="trm-fixed-container" data-scroll data-scroll-sticky data-scroll-target=".locomotive-scroll__sticky-target" data-scroll-offset="-10">
+    
+        <div class="trm-fixed-btn" data-title="阅读模式" onclick="switchReadMode()">
+            <i class="iconfont fas fa-book-reader"></i>
+        </div>
+    
+    
+</div>
+            <!-- body end -->
+          </div>
+        </div>
+      </div>
+      <!-- scroll container end -->
+
+  </div>
+  <!-- app wrapper end -->
+
+  <div id="trm-back-top" class="trm-back-top" data-title="回到顶部">
+    <i class="iconfont fas fa-arrow-up"></i>
+</div>
+  
+<div class="trm-search-popup">
+    <div class="trm-search-header">
+        <span class="trm-search-popup-btn-close">
+            <i class="iconfont fas fa-times"></i>
+        </span>
+    </div>
+    <div class="form trm-search-form">
+        <input class="trm-search-input" type="text" placeholder="搜索...">
+    </div>
+    <div class="trm-search-result-container">
+
+    </div>
+</div>
+
+  <!-- Plugin -->
+
+
+
+    
+    
+
+    
+<script src="https://unpkg.com/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.js"></script>
+
+    
+<script src="https://unpkg.com/@fancyapps/ui@4.0/dist/fancybox.umd.js"></script>
+
+
+    
+
+    
+        <script src="/js/plugins/typing.js?v=1.2.14"></script>
+    
+
+    
+        
+<script src="https://unpkg.com/hexo-generator-searchdb@1.4.0/dist/search.js"></script>
+
+        <script src="/js/plugins/local_search.js?v=1.2.14"></script>
+    
+
+    <!-- 数学公式 -->
+    
+
+
+    <!-- 评论插件 -->
+    
+        
+        
+    
+
+
+
+<!-- CDN -->
+
+
+    
+
+    
+
+    
+
+
+
+
+    <!-- Service Worker -->
+    
+    <!-- baidu push -->
+    
+    <script data-swup-reload-script>
+        (function () {
+            var bp = document.createElement('script');
+            var curProtocol = window.location.protocol.split(':')[0];
+            if (curProtocol === 'https') {
+                bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+            }
+            else {
+                bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+            }
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(bp, s);
+        })();
+    </script>
+
+
+
+<script id="async-script" src="/js/main.js?v=1.2.14"></script>
+
+</body>
+
+</html>
